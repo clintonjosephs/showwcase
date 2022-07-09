@@ -1,4 +1,5 @@
 import { AppProps } from 'next/app';
+import Footer from '../ui/components/Footer';
 import '../styles/globals.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -7,15 +8,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <div className="container">
         <Component {...pageProps} />
       </div>
-      <footer className="footer">
-        <a
-          href="https://showwcase.com"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by Showwcase
-        </a>
-      </footer>
+      <Footer />
     </>
   );
 }
