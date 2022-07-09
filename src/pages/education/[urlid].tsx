@@ -1,9 +1,6 @@
-import { useSelector } from "react-redux";
-import { stateType } from "../../redux/educationShowcase/educationActions";
-
 const personEduction = () => {
-    const { person } = useSelector((state: stateType) => state);
-    const { id, name } = person;
+    // const { person } = useSelector((state: stateType) => state);
+    // const { id, name } = person;
     return (
         <div>
         <h6>Welcome to {`${name}'s`} education page</h6>

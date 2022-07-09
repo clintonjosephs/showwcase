@@ -2,13 +2,12 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { useDispatch } from 'react-redux';
 import Person from '../models/person';
-import { createUser } from '../redux/educationShowcase/educationActions';
+// import { createUser } from '../redux-test/educationShowcase/educationActions';
 import styles from '../styles/Home.module.css';
 
 const Home = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const router = useRouter();
 
   const nameRef = useRef<HTMLInputElement>(null);
@@ -24,7 +23,7 @@ const Home = () => {
     const urlId = userName.replace(' ', '-').toLowerCase();
     const personToAdd = new Person(uuidv4(), userName, urlId);
 
-    dispatch(createUser(personToAdd));
+    // dispatch(createUser(personToAdd));
     router.push(`/education/${urlId}`);
   };
 
