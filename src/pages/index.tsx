@@ -25,9 +25,7 @@ const Home = () => {
     const personToAdd = new Person(uuidv4(), userName, urlId);
 
     dispatch(createUser(personToAdd));
-    router.push(
-      `${urlId}`
-    )
+    router.push(`/education/${urlId}`);
   };
 
   return (
