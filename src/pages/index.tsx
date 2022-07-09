@@ -2,17 +2,16 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import { postRequest } from '../helpers/calls';
 import Person from '../models/person';
-// import { createUser } from '../redux-test/educationShowcase/educationActions';
 import styles from '../styles/Home.module.css';
 
 const Home = () => {
-  // const dispatch = useDispatch();
   const router = useRouter();
 
   const nameRef = useRef<HTMLInputElement>(null);
 
-  const submitHandler = (e: React.FormEvent<HTMLFormElement>) => {
+  const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const userName = nameRef.current!.value.trim();
 
@@ -23,8 +22,13 @@ const Home = () => {
     const urlId = userName.replace(' ', '-').toLowerCase();
     const personToAdd = new Person(uuidv4(), userName, urlId);
 
-    // dispatch(createUser(personToAdd));
-    router.push(`/education/${urlId}`);
+    const response = await postRequest('/api/new-user', personToAdd);
+
+    const data = await response.json();
+
+    if (data.success) {
+      router.push(`/education/${urlId}`);
+    }
   };
 
   return (
