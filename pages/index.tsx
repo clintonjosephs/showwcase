@@ -18,7 +18,13 @@ const Home = () => (
       </h6>
 
       <div>
-        <span>Type your name and click "Enter" below to begin!</span>
+        <form className={styles.form}>
+          <label htmlFor="name">
+            Type your name and click "Enter" below to begin!
+          </label>
+          <input type="text" placeholder="Your name" id="name" />
+          <button type="submit">Enter</button>
+        </form>
       </div>
     </main>
 
