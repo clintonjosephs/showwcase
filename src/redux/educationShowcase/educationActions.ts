@@ -1,3 +1,4 @@
+import { Action, Reducer } from 'redux';
 import Education from "../../models/education";
 import University from "../../models/university";
 import Person from "../../models/person";
@@ -7,7 +8,7 @@ const CREATE_USER = 'CREATE_USER';
 const CREATE_EDUCATION = 'CREATE_EDUCATION';
 const ADD_UNIVERSITIES = 'ADD_UNIVERSITIES';
 
-type stateType = {
+export type stateType = {
     person: Person;
     education: Education[];
     universities: University[];
@@ -37,7 +38,7 @@ export const addUniversities = (universities: University[]) => ({
 });
 
 // reducer
-const educationReducer = (state = initialState, { type, payload }) => {
+const educationReducer: Reducer<stateType> = (state = initialState, { type, payload }) => {
     switch(type) {
         case CREATE_USER:
             return { ...state, person: payload };

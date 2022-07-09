@@ -1,11 +1,9 @@
-import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { applyMiddleware, createStore } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 import educationReducer from './educationShowcase/educationActions';
 
-const reducer = combineReducers({
-    educationReducer,
-});
+const reducer = educationReducer;
 
 // creating a store
 const store = createStore(reducer, applyMiddleware(logger, thunk));
