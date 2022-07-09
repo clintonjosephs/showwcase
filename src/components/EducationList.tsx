@@ -1,8 +1,8 @@
 import React from 'react';
-import EductionItem from './EductionItem';
+import EducationItem from './EducationItem';
 
 const EducationList = () => {
-  const EductionList = [
+  const EducationList = [
     'University of Cambridge',
     'University of London',
     'University of Southampton',
@@ -10,8 +10,8 @@ const EducationList = () => {
 
   return (
     <section>
-      {EductionList.map((item) => (
-        <EductionItem institution={item}/>
+      {EducationList.map((item) => (
+        <EducationItem institution={item}/>
       ))}
     </section>
   );

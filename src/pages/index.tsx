@@ -22,10 +22,10 @@ const Home = () => {
     const urlId = userName.replace(' ', '-').toLowerCase();
     const personToAdd = new Person(uuidv4(), userName, urlId);
 
-    const response = await postRequest('/api/new-user', personToAdd);
+    const response = await postRequest('/api/person_api', personToAdd);
 
     const data = await response.json();
-
+    console.log(data);
     if (data.success) {
       router.push(`/education/${urlId}`);
     }

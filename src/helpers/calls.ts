@@ -5,5 +5,3 @@ export const postRequest = (url: string, data: any) => fetch(url, {
       'Content-Type': 'application/json',
     },
   });
-
-export const getResponse = (url: string) => fetch(url);

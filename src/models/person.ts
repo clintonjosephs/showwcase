@@ -1,12 +1,14 @@
+import { ObjectId } from 'mongodb';
+
 class Person {
-  id: string;
   name: string;
   url_id: string;
+  _id: string;
 
   constructor(userId: string, name: string, url_id: string) {
-    this.id = userId;
     this.name = name;
     this.url_id = url_id;
+    this._id = userId;
   }
 }
 
