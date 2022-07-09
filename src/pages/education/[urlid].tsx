@@ -1,26 +1,32 @@
 import { GetServerSideProps } from 'next';
-import * as dotenv from 'dotenv';
+import styles from '../../styles/PersonEducation.module.css';
 import Person from '../../models/person';
-import { CloseConnection, ConnectToDB } from '../../db/connection';
+import { CloseConnection, connectPerson } from '../../db/connection';
+import Head from 'next/head';
 
 const personEducation: React.FC<{ person: Person }> = ({ person }) => {
   return (
-    <div>
-      <h6>Welcome to {`${person.name}'s`} education page</h6>
+    <>
+    <Head>
+        <title>{ `${person.name} | Showwcase` }</title>
+        <meta name="description" content="Explore educational background" />
+    </Head>
+    <section className={styles.heading}>
+      <h5 className={styles.dynamicText}>Welcome to {`${person.name}'s`} education page</h5>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam
-        quidem, quisquam.
+       <button type="button" className={styles.button}>
+          Add new education
+       </button>
       </p>
-    </div>
+    </section>
+    </>
   );
 };
 
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  dotenv.config();
   const { urlid } = context.params;
-  const connectionObj = await ConnectToDB(process.env.USERS_COLLECTION_NAME);
-
+  const connectionObj = await connectPerson();
   const person = await connectionObj.collection.findOne({ url_id: urlid });
 
   CloseConnection(connectionObj.client);

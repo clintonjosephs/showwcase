@@ -25,7 +25,6 @@ const Home = () => {
     const response = await postRequest('/api/person_api', personToAdd);
 
     const data = await response.json();
-    console.log(data);
     if (data.success) {
       router.push(`/education/${urlId}`);
     }

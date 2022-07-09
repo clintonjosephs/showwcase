@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
-import { CloseConnection, ConnectToDB } from '../../db/connection';
-import * as dotenv from 'dotenv';
+import { CloseConnection, connectPerson } from '../../db/connection';
+
 
 type ResponseData = {
   message: string;
@@ -11,9 +11,7 @@ const handler = async (
   req: NextApiRequest,
   res: NextApiResponse<ResponseData>
 ) => {
-  dotenv.config();
-  const connectionObj = await ConnectToDB(process.env.USERS_COLLECTION_NAME);
-
+  const connectionObj = await connectPerson();
   try {
     if (req.method === 'POST') {
       const { body } = req;
