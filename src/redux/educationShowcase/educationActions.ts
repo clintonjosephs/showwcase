@@ -1,9 +1,8 @@
-// action addresses
-
 import Education from "../../models/education";
 import University from "../../models/university";
 import Person from "../../models/person";
 
+// action addresses
 const CREATE_USER = 'CREATE_USER';
 const CREATE_EDUCATION = 'CREATE_EDUCATION';
 const ADD_UNIVERSITIES = 'ADD_UNIVERSITIES';
@@ -16,7 +15,7 @@ type stateType = {
 
 // inital state
 const initialState: stateType = {
-    person: new Person('', ''),
+    person: new Person('', '', ''),
     education: [],
     universities: [],
 }
@@ -37,6 +36,7 @@ export const addUniversities = (universities: University[]) => ({
     payload: universities
 });
 
+// reducer
 const educationReducer = (state = initialState, { type, payload }) => {
     switch(type) {
         case CREATE_USER:
