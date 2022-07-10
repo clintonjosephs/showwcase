@@ -5,6 +5,7 @@ import { CloseConnection, connectEducation } from '../../db/connection';
 type ResponseData = {
   message: string;
   success: boolean;
+  id?: string;
 };
 
 const handler = async (
@@ -15,10 +16,10 @@ const handler = async (
   try {
     if (req.method === 'POST') {
       const { body } = req;
-      await connectionObj.collection.insertOne(body);
+      const response = await connectionObj.collection.insertOne(body);
       res
         .status(200)
-        .json({ message: 'Academic history successfully updated.', success: true });
+        .json({ message: 'Academic history successfully updated.', success: true, id: response.insertedId.toString() });
     }
   } catch (err) {
     console.log(err);

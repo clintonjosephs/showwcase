@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
-import { v4 as uuidv4 } from 'uuid';
+import { v4 } from 'uuid';
 
 import { BuildFormElements, fields } from '../helpers/format';
 import { getSchools, postRequest } from '../helpers/calls';
@@ -69,7 +69,7 @@ const EducationForm: React.FC<{ closeModal: () => void; personId: string; update
       formData.end_date_month + ' , ' + formData.end_date_year,
       formData.grade,
       formData.activities,
-      formData.description
+      formData.description,
     );
 
     const response = await postRequest('/api/add_education', educationToAdd);
@@ -77,6 +77,7 @@ const EducationForm: React.FC<{ closeModal: () => void; personId: string; update
     const data = await response.json();
     if (data.success) {
       toast.success(data.message);
+      educationToAdd.id = data.id;
       updateEducationData(educationToAdd);
       setFormData(fields);
     } else {
@@ -114,7 +115,7 @@ const EducationForm: React.FC<{ closeModal: () => void; personId: string; update
                 <SuggestionsList
                   data={suggestions}
                   handleClick={handleSchoolSelect}
-                  key={uuidv4()}
+                  key={v4()}
                 />
               )}
             </>

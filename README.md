@@ -24,7 +24,6 @@
   - MongoDB
   ```
 
-
 ## Getting Started
 
 To get a local copy up and running follow these simple example steps.
@@ -36,13 +35,25 @@ To get a local copy up and running follow these simple example steps.
   -  [Git](https://git-scm.com/downloads)
   -  [Node](https://nodejs.org/en/download/)
 
-### Usage
+
 #### Clone this repository
 
 ```bash
 $ git@github.com:clintonjosephs/showwcase.git
 $ cd showwcase
 ```
+
+### Database
+```
+ - Create [MongoDB](https://mongodb.com) cluster0 and database showwcase
+ - Copy connection string
+ - Add the following to .env file
+    - DB_CONN_STRING="YOUR CONNECTION STRING"
+    - USERS_COLLECTION_NAME="people"
+    - EDUCATION_COLLECTION_NAME="education"
+```
+
+
 #### Run project
 
 ```bash
