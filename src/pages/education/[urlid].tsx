@@ -14,6 +14,7 @@ Modal.setAppElement('#welcome');
 
 const personEducation: React.FC<{ person: Person, education: Education[], }> = ({ person, education }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [eduData, setEducation] = useState(education);
 
   const openModal = () => {
     setIsOpen(true);
@@ -49,8 +50,8 @@ const personEducation: React.FC<{ person: Person, education: Education[], }> = (
         </p>
       </section>
       <section className={styles.educationDetails}>
-        <Institutions />
-        <EducationList data={education}/>
+        <Institutions data={eduData} />
+        <EducationList data={eduData}/>
       </section>
     </>
   );
@@ -81,6 +82,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         description: history.description,
         user_id: history.user_id,
       })),
+
     },
   };
 };

@@ -1,19 +1,18 @@
-import React from 'react'
-import styles from '../styles/PersonEducation.module.css'
+import React from 'react';
+import Education from '../models/education';
+import styles from '../styles/PersonEducation.module.css';
 
-const Institutions = () => {
+const Institutions: React.FC<{ data: Education[] }> = ({ data }) => {
   return (
     <aside className={styles.institutions}>
-    <h4>Academic Institution(s)</h4>
-    <ul>
-    <li>HTML</li>
-    <li>CSS</li>
-    <li>JavaScrilit</li>
-    <li>liHli</li>
-    </ul>
-  
-  </aside>
-  )
-}
+      <h4>Academic Institution(s)</h4>
+      <ul>
+        {data.reverse().map((item) => (
+          <li>{item.university}</li>
+        ))}
+      </ul>
+    </aside>
+  );
+};
 
-export default Institutions
+export default Institutions;
