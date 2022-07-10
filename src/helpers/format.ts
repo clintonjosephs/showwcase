@@ -110,7 +110,7 @@ export const BuildFormElements = () => {
       id: 4,
       name: 'start_date_month',
       type: 'select',
-      placeholder: 'Month',
+      placeholder: 'Start month',
       errorMessage: 'You should enter month',
       options: month,
       required: false,
@@ -119,7 +119,7 @@ export const BuildFormElements = () => {
       id: 5,
       name: 'start_date_year',
       type: 'select',
-      placeholder: 'Year',
+      placeholder: 'Start year',
       errorMessage: 'You should enter year',
       options: year,
       required: false,
@@ -128,7 +128,7 @@ export const BuildFormElements = () => {
       id: 6,
       name: 'end_date_month',
       type: 'select',
-      placeholder: 'Month',
+      placeholder: 'End month',
       errorMessage: 'You should enter month',
       options: month,
       required: false,
@@ -137,7 +137,7 @@ export const BuildFormElements = () => {
       id: 7,
       name: 'end_date_year',
       type: 'select',
-      placeholder: 'Year',
+      placeholder: 'End year',
       errorMessage: 'You should enter year',
       options: year,
       required: false,
@@ -170,3 +170,19 @@ export const BuildFormElements = () => {
 
   return inputs;
 };
+
+
+export const fields = () => {
+  return {
+    university: '',
+    degree: '',
+    field_of_study: '',
+    start_date_month: '',
+    start_date_year: '',
+    end_date_month: '',
+    end_date_year: '',
+    grade: '',
+    activities: '',
+    description: '',
+  }
+}

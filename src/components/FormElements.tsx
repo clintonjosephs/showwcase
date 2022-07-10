@@ -7,6 +7,7 @@ const FormElements: React.FC<{
   name: string;
   errorMessage: string;
   onChange: (event) => void;
+  onBlur: () => void;
   placeholder: string;
   required?: boolean;
   options?: string[];
@@ -15,6 +16,7 @@ const FormElements: React.FC<{
   const {
     errorMessage,
     onChange,
+    onBlur,
     type,
     name,
     placeholder,
@@ -24,20 +26,25 @@ const FormElements: React.FC<{
   } = props;
   const handleFocus = async () => {
     setFocused(true);
+    setTimeout(() => {
+      onBlur();
+    }, 1000);
   };
 
   if (type === 'text') {
     return (
       <div className={`${styles.div_input} ${styles.span_grid}`}>
+        <label htmlFor={name} className={`${name === 'degree' && styles.top_gap}`}>{placeholder}</label>
         <input
           type={type}
           name={name}
-          placeholder={placeholder}
           onChange={(event) => onChange(event)}
           value={value}
           onBlur={handleFocus}
           data-focused={focused.toString()}
           required={required}
+          autoComplete="off"
+          className={`${name === 'university' ? styles.no_gap : styles.gap}`}
         />
         <span>{errorMessage}</span>
       </div>
@@ -45,10 +52,15 @@ const FormElements: React.FC<{
   } else if (type === 'select') {
     return (
       <div className={styles.div_input}>
-        <div className={styles.selectWrapper}>
-          <select onChange={(event) => onChange(event)} required={required}>
+        <label htmlFor={name}>{placeholder}</label>
+        <div className={`${styles.selectWrapper} ${styles.gap}`}>
+          <select
+            onChange={(event) => onChange(event)}
+            required={required}
+            name={name}
+          >
             <option value="" hidden>
-              {placeholder}
+              - select -
             </option>
             {options.map((val) => (
               <option key={val} value={val}>

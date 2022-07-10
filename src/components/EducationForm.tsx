@@ -1,41 +1,92 @@
 import React, { useState } from 'react';
-import { BuildFormElements } from '../helpers/format';
+import { BuildFormElements, fields } from '../helpers/format';
 import FormElements from './FormElements';
 import styles from '../styles/EducationForm.module.css';
+import SuggestionsList from './SuggestionsList';
+import { getSchools } from '../helpers/calls';
+import University from '../models/university';
+import { uuid } from 'uuidv4';
 
-const EducationForm: React.FC<{ closeModal: () => void, personId: string }> = ({
+const EducationForm: React.FC<{ closeModal: () => void; personId: string }> = ({
   closeModal,
-  personId
+  personId,
 }) => {
+  const [suggestions, setSuggestions] = useState([]);
+  const [formData, setFormData] = useState(fields);
+
   const elements = BuildFormElements();
 
-  const onChange = (e) => {
-    console.log(personId);
-    console.log(e.target.value);
+  const clearSuggestions = () => {
+    setSuggestions([]);
+  }
+
+  const handleSchoolSelect = ( school_name: string ) => {
+    setFormData( {...formData, university: school_name} );
+    clearSuggestions();
+  };
+
+  const onChange = async (e) => {
+    // console.log(personId);
+    // console.log(data);
+    // console.log(e.target.name);
+
+    const data = e.target.value;
+    setFormData({ ...formData, [e.target.name]: data });
+    if (e.target.name === 'university' && data.length >= 3) {
+      const response = await getSchools(data);
+      const response_data = await response.json();
+      setSuggestions(
+        response_data.slice(0, 10).map(
+          (value) =>
+            new University(
+              value.country,
+              value.name,
+              value.domains,
+              value.web_pages
+            )
+        )
+      );
+    } else {
+      clearSuggestions();
+    }
   };
 
   return (
     <>
       <div className={styles.modalHeading}>
         <span>Add Education</span>
-        <button onClick={closeModal} className={styles.closeBtn}>X</button>
+        <button onClick={closeModal} className={styles.closeBtn}>
+          X
+        </button>
       </div>
 
       <form className={styles.form}>
-        {elements.map((input) => (
-          <FormElements
-            key={input.id}
-            name={input.name}
-            type={input.type}
-            placeholder={input.placeholder}
-            errorMessage={input.errorMessage}
-            options={input.options ? input.options : []}
-            onChange={onChange}
-            required={input.required}
-          />
-        ))}
+        {elements.map((input) => {
+          let mm = (
+            <>
+              <FormElements
+                key={input.id}
+                name={input.name}
+                type={input.type}
+                value={ formData[input.name] }
+                placeholder={input.placeholder}
+                errorMessage={input.errorMessage}
+                options={input.options ? input.options : []}
+                onChange={onChange}
+                onBlur={clearSuggestions}
+                required={input.required}
+              />
+              {input.name === 'university' && suggestions.length > 0 && (
+                <SuggestionsList data={suggestions} handleClick={handleSchoolSelect}  key={uuid()} />
+              )}
+            </>
+          );
+          return mm;
+        })}
         <div style={{ width: '100%', gridColumn: 'span 2' }}>
-          <button type='submit' className={styles.educationBtn}>Save</button>
+          <button type="submit" className={styles.educationBtn}>
+            Save
+          </button>
         </div>
       </form>
     </>

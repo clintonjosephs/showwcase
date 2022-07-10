@@ -11,6 +11,11 @@
   resize: vertical;
 }
 
+.div_input label {
+  font-size: small;
+  color: #999;
+}
+
 .div_input select {
   width: 100%;
   resize: vertical;
@@ -26,6 +31,19 @@
   font-size: small;
   color: red;
   display: none;
+}
+
+.gap {
+  margin-bottom: 20px;
+}
+
+.top_gap {
+  margin-top: 20px;
+}
+
+.no_gap {
+  margin-bottom: 0px;
+  border: solid 10px #eaeaea;
 }
 
 .div_input input:invalid[data-focused='true'] ~ span {

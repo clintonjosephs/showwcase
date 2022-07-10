@@ -1,14 +1,15 @@
 class University {
   country: string;
   name: string;
-  domain: string;
-  web_page: string;
+  domains: string[];
+  web_pages: string[];
 
-  constructor(country: string, name: string, domain: string, web_page: string) {
+
+  constructor(country: string, name: string, domains: string[], web_pages: string[]) {
     this.country = country;
     this.name = name;
-    this.domain = domain;
-    this.web_page = web_page;
+    this.domains = domains;
+    this.web_pages = web_pages;
   }
 }
 
