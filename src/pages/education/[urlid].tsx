@@ -16,7 +16,7 @@ import Education from '../../models/education';
 
 Modal.setAppElement('#welcome');
 
-const personEducation: React.FC<{ person: Person; education: Education[] }> = ({
+const PersonEducation: React.FC<{ person: Person; education: Education[] }> = ({
   person,
   education,
 }) => {
@@ -99,4 +99,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   };
 };
 
-export default personEducation;
+export default PersonEducation;

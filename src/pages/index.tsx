@@ -46,7 +46,7 @@ const Home = () => {
       <div>
         <form className={styles.form} onSubmit={submitHandler}>
           <label htmlFor="name">
-            Type your name and click "Enter" below to begin!
+            Type your name and click &#34;Enter&#34; below to begin!
           </label>
           <input
             type="text"
