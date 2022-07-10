@@ -1,0 +1,65 @@
+.div_input {
+  display: flex;
+  flex-direction: column;
+}
+
+.div_input input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.div_input label {
+  font-size: small;
+  color: #999;
+}
+
+.div_input select {
+  width: 100%;
+  resize: vertical;
+  border: none;
+}
+
+.div_input select:focus {
+  outline: none;
+  border: none;
+}
+
+.div_input span {
+  font-size: small;
+  color: red;
+  display: none;
+}
+
+.gap {
+  margin-bottom: 20px;
+}
+
+.top_gap {
+  margin-top: 20px;
+}
+
+.no_gap {
+  margin-bottom: 0px;
+  border: solid 10px #eaeaea;
+}
+
+.div_input input:invalid[data-focused='true'] ~ span {
+  display: block;
+}
+
+.div_input input:invalid[data-focused='true'] {
+  border-color: red;
+}
+
+.span_grid {
+  grid-column: span 2;
+}
+
+.selectWrapper {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}

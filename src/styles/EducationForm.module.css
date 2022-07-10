@@ -1,0 +1,65 @@
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 30rem;
+  overflow: auto;
+}
+
+.modalHeading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.educationBtn {
+  min-width: 5rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  border: none;
+  background: #2c96f3;
+  color: #fff;
+  float: right;
+  cursor: pointer;
+}
+
+.success {
+  color: white;
+  font-size: small;
+  font-weight: bold;
+  grid-column: span 2;
+  background: green;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 5px;
+}
+
+.suggestionList {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-size: small;
+  height: 8rem;
+  overflow: auto;
+  grid-column: span 2;
+  border: 1px solid #eaeaea;
+  background: white;
+  width: 33rem;
+}
+
+.suggestionList li {
+  padding: 0.5rem;
+  border-bottom: 1px solid #eaeaea;
+  cursor: pointer;
+}
+
+.suggestionList li:hover {
+  background: #eaeaea;
+}

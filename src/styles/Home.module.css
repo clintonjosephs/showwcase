@@ -1,0 +1,28 @@
+.title {
+  margin-bottom: 7rem;
+  line-height: 1.15;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form input[type="text"] {
+  margin: 1rem;
+  padding: 0.5rem;
+  font-size: 1rem;
+}
+
+.welcomeBtn {
+  padding: 0.5rem;
+  font-size: small;
+  background: #eaeaea;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  align-self: center;
+  max-width: 10rem;
+}
