@@ -14,12 +14,11 @@ import Institutions from '../../components/Institutions';
 import EducationList from '../../components/EducationList';
 import Education from '../../models/education';
 
-Modal.setAppElement('#welcome');
-
 const PersonEducation: React.FC<{ person: Person; education: Education[] }> = ({
   person,
   education,
 }) => {
+  Modal.setAppElement('body');
   const [modalIsOpen, setIsOpen] = useState(false);
   const [eduData, setEducation] = useState(education);
 
