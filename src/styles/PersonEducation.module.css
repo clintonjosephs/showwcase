@@ -32,3 +32,56 @@
   justify-content: center;
   align-items: center;    
 }
+
+.educationDetails {
+  display: flex;
+  flex-direction: row;
+}
+
+.institutions {
+  margin: 1rem;
+  padding: 1rem;
+  border-radius: 0.25rem;
+  min-height: 25rem;
+  color: black;
+  border: solid 1px #2C96F3;
+}
+
+.institutions ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  font-size: small;
+  overflow: auto;
+  border: 1px solid #eaeaea;
+  background: white;
+}
+
+.institutions ul li {
+  padding: 0.5rem;
+  border-bottom: 1px solid #eaeaea;
+  cursor: pointer;
+}
+
+.institutions ul li:hover {
+  background: #eaeaea;
+}
+
+.educationList {
+  list-style: none;
+}
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  width: 35rem;
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+.container {
+  padding: 2px 16px;
+  font-size: small;
+}

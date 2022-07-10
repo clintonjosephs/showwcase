@@ -6,6 +6,8 @@ import Person from '../../models/person';
 import { CloseConnection, connectPerson } from '../../db/connection';
 import Head from 'next/head';
 import EducationForm from '../../components/EducationForm';
+import Institutions from '../../components/Institutions';
+import EducationList from '../../components/EducationList';
 
 Modal.setAppElement('#welcome');
 
@@ -44,6 +46,10 @@ const personEducation: React.FC<{ person: Person }> = ({ person }) => {
             <EducationForm closeModal={closeModal} personId={person._id} />
           </Modal>
         </p>
+      </section>
+      <section className={styles.educationDetails}>
+        <Institutions />
+        <EducationList />
       </section>
     </>
   );

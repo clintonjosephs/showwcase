@@ -64,10 +64,10 @@ const EducationForm: React.FC<{ closeModal: () => void; personId: string }> = ({
       formData.university,
       formData.degree,
       formData.field_of_study,
-      formData.start_date_month + ',' + formData.start_date_year,
-      formData.end_date_month + ',' + formData.end_date_year,
+      formData.start_date_month + ' , ' + formData.start_date_year,
+      formData.end_date_month + ' , ' + formData.end_date_year,
       formData.grade,
-      formData.description,
+      formData.activities,
       formData.description
     );
 
