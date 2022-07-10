@@ -1,6 +1,7 @@
 import University from './university';
 
 class Education {
+  user_id: string;
   university: University;
   degree: string;
   field_of_study: string;
@@ -11,6 +12,7 @@ class Education {
   description: string;
 
   constructor(
+    user_id: string,
     university: University,
     degree: string,
     field_of_study: string,
@@ -28,6 +30,7 @@ class Education {
     this.grade = grade;
     this.activities = activities;
     this.description = description;
+    this.user_id = user_id;
   }
 }
 
