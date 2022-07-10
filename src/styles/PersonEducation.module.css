@@ -64,6 +64,10 @@
   cursor: pointer;
 }
 
+.institutions ul li a {
+  text-decoration: none;
+}
+
 .institutions ul li:hover {
   background: #eaeaea;
 }

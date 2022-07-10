@@ -84,6 +84,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     props: {
       person: person,
       education: education.map((history) => ({
+        id: history._id.toString(),
         university: history.university,
         degree: history.degree,
         field_of_study: history.field_of_study,

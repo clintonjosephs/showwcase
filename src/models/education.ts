@@ -1,4 +1,7 @@
+import { ObjectId } from "mongodb";
+
 class Education {
+  id: string;
   user_id: string;
   university: string;
   degree: string;
@@ -18,7 +21,8 @@ class Education {
     end_date: string,
     grade: string,
     activities: string,
-    description: string
+    description: string,
+    _id?: string,
   ) {
     this.university = university;
     this.degree = degree;
@@ -29,6 +33,7 @@ class Education {
     this.activities = activities;
     this.description = description;
     this.user_id = user_id;
+    this.id = _id;
   }
 }
 

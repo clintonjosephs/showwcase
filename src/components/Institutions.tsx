@@ -15,7 +15,9 @@ const Institutions: React.FC<{ data: Education[] }> = ({ data }) => {
       <h4>Academic Institution(s)</h4>
       <ul>
         {schools.reverse().map((item: Education) => (
-          <li key={uuidv4()}>{item.university}</li>
+          <li key={uuidv4()}>
+            <a href={`#${item.id}`}>{item.university}</a>
+          </li>
         ))}
       </ul>
     </div>

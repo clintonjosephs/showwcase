@@ -6,6 +6,7 @@ const EducationItem: React.FC<{ institution: Education }> = ({
   institution,
 }) => {
   const {
+    id,
     university,
     degree,
     field_of_study,
@@ -16,7 +17,7 @@ const EducationItem: React.FC<{ institution: Education }> = ({
     description,
   } = institution;
   return <li>
-      <div className={styles.card}>
+      <div className={styles.card} id={id}>
         <div className={styles.container}>
           <h5><b>{ degree } @ { university }</b></h5>
           <span> { start_date } - { end_date }</span>
