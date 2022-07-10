@@ -16,11 +16,6 @@ const personEducation: React.FC<{ person: Person }> = ({ person }) => {
     setIsOpen(true);
   };
 
-  const afterOpenModal = () => {
-    // references are now sync'd and can be accessed.
-    //   subtitle.style.color = '#f00';
-  };
-
   const closeModal = () => {
     setIsOpen(false);
   };
@@ -41,13 +36,12 @@ const personEducation: React.FC<{ person: Person }> = ({ person }) => {
           </button>
           <Modal
             isOpen={modalIsOpen}
-            onAfterOpen={afterOpenModal}
             onRequestClose={closeModal}
             contentLabel="Education Form"
             className={styles.modal}
             overlayClassName={styles.overlay}
           >
-            <EducationForm closeModal={closeModal} />
+            <EducationForm closeModal={closeModal} personId={person._id} />
           </Modal>
         </p>
       </section>

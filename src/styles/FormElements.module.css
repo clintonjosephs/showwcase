@@ -1,4 +1,47 @@
 .div_input {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
+}
+
+.div_input input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+.div_input select {
+  width: 100%;
+  resize: vertical;
+  border: none;
+}
+
+.div_input select:focus {
+  outline: none;
+  border: none;
+}
+
+.div_input span {
+  font-size: small;
+  color: red;
+  display: none;
+}
+
+.div_input input:invalid[data-focused='true'] ~ span {
+  display: block;
+}
+
+.div_input input:invalid[data-focused='true'] {
+  border-color: red;
+}
+
+.span_grid {
+  grid-column: span 2;
+}
+
+.selectWrapper {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }

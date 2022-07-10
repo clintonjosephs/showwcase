@@ -1,0 +1,29 @@
+.form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 20px;
+}
+
+.modalHeading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+.closeBtn {
+    background: none;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.educationBtn {
+  width: 5rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  border: none;
+  background: #2C96F3;
+  color: #fff;
+  float: right;
+}

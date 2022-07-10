@@ -5,6 +5,7 @@ export type Input = {
   placeholder: string;
   errorMessage: string;
   options?: string[];
+  required: boolean;
 };
 
 export const BuildFormElements = () => {
@@ -23,22 +24,62 @@ export const BuildFormElements = () => {
     'December',
   ];
   const year = [
-    '2020',
-    '2021',
-    '2022',
-    '2023',
-    '2024',
-    '2025',
-    '2026',
-    '2027',
-    '2028',
-    '2029',
-    '2030',
-    '2031',
-    '2032',
-    '2033',
-    '2034',
     '2035',
+    '2034',
+    '2033',
+    '2032',
+    '2031',
+    '2030',
+    '2029',
+    '2028',
+    '2027',
+    '2026',
+    '2025',
+    '2024',
+    '2023',
+    '2022',
+    '2021',
+    '2020',
+    '2019',
+    '2018',
+    '2017',
+    '2016',
+    '2015',
+    '2014',
+    '2013',
+    '2012',
+    '2011',
+    '2010',
+    '2009',
+    '2008',
+    '2007',
+    '2006',
+    '2005',
+    '2004',
+    '2003',
+    '2002',
+    '2001',
+    '2000',
+    '1999',
+    '1998',
+    '1997',
+    '1996',
+    '1995',
+    '1994',
+    '1993',
+    '1992',
+    '1991',
+    '1990',
+    '1989',
+    '1988',
+    '1987',
+    '1986',
+    '1985',
+    '1984',
+    '1983',
+    '1982',
+    '1981',
+    '1980',
   ];
   const inputs: Input[] = [
     {
@@ -47,6 +88,7 @@ export const BuildFormElements = () => {
       type: 'text',
       placeholder: 'University ',
       errorMessage: 'Please enter university',
+      required: true,
     },
     {
       id: 2,
@@ -54,6 +96,7 @@ export const BuildFormElements = () => {
       type: 'text',
       placeholder: 'Degree',
       errorMessage: 'You should enter degree',
+      required: false,
     },
     {
       id: 3,
@@ -61,6 +104,7 @@ export const BuildFormElements = () => {
       type: 'text',
       placeholder: 'Field of study',
       errorMessage: 'You should enter field of study',
+      required: false,
     },
     {
       id: 4,
@@ -69,6 +113,7 @@ export const BuildFormElements = () => {
       placeholder: 'Month',
       errorMessage: 'You should enter month',
       options: month,
+      required: false,
     },
     {
       id: 5,
@@ -77,6 +122,7 @@ export const BuildFormElements = () => {
       placeholder: 'Year',
       errorMessage: 'You should enter year',
       options: year,
+      required: false,
     },
     {
       id: 6,
@@ -85,6 +131,7 @@ export const BuildFormElements = () => {
       placeholder: 'Month',
       errorMessage: 'You should enter month',
       options: month,
+      required: false,
     },
     {
       id: 7,
@@ -93,6 +140,7 @@ export const BuildFormElements = () => {
       placeholder: 'Year',
       errorMessage: 'You should enter year',
       options: year,
+      required: false,
     },
     {
       id: 8,
@@ -100,6 +148,7 @@ export const BuildFormElements = () => {
       type: 'text',
       placeholder: 'Grade',
       errorMessage: 'You should enter grade',
+      required: false,
     },
     {
       id: 9,
@@ -107,6 +156,7 @@ export const BuildFormElements = () => {
       type: 'text',
       placeholder: 'Activities',
       errorMessage: 'You should enter activities',
+      required: false,
     },
     {
       id: 10,
@@ -114,9 +164,9 @@ export const BuildFormElements = () => {
       type: 'text',
       placeholder: 'Description',
       errorMessage: 'You should enter description',
+      required: false,
     },
   ];
 
   return inputs;
 };
-

@@ -1,5 +1,3 @@
-import { ObjectId } from 'mongodb';
-
 class Person {
   name: string;
   url_id: string;

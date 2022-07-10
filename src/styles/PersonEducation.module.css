@@ -15,8 +15,7 @@
 
 .modal {
   position: absolute;
-  max-width: 50rem;
-  max-height: 35rem;
+  width: 35rem;
   background-color: #fff;
   padding: 1rem;
   border-radius: 0.25rem;
