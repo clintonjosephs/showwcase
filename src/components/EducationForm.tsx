@@ -69,7 +69,7 @@ const EducationForm: React.FC<{ closeModal: () => void; personId: string; update
       formData.end_date_month + ' , ' + formData.end_date_year,
       formData.grade,
       formData.activities,
-      formData.description
+      formData.description,
     );
 
     const response = await postRequest('/api/add_education', educationToAdd);
