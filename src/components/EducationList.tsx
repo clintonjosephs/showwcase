@@ -5,6 +5,10 @@ import styles from '../styles/PersonEducation.module.css';
 import Education from '../models/education';
 
 const EducationList: React.FC<{ data: Education[] }> = ({ data }) => {
+  if ( data.length === 0 ) {
+    const eduObj = new Education('', 'No Academic Information Available', '', '', '', '', '', '', '');
+    return <EducationItem institution={eduObj} key={uuidv4()} />;
+  }
   return (
     <ul className={styles.educationList}>
       {data.reverse().map((item) => (
