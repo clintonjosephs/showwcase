@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
-import styles from '../../styles/FormInput.module.css';
+import styles from '../styles/FormElements.module.css';
 
 const FormElements: React.FC<{
   type: string;
   value?: string;
   name: string;
   errorMessage: string;
-  onChange: () => void;
+  onChange: (event) => void;
   placeholder: string;
   required?: boolean;
   options?: string[];
-}> = React.forwardRef((props, ref) => {
+}> = (props) => {
   const [focused, setFocused] = useState(false);
   const {
     errorMessage,
@@ -33,13 +33,12 @@ const FormElements: React.FC<{
           type={type}
           name={name}
           placeholder={placeholder}
-          onChange={onChange}
+          onChange={(event) => onChange(event)}
           value={value}
           onBlur={handleFocus}
           autoFocus={!focused}
           onFocus={handleFocus}
           required={required}
-          ref={ref}
         />
         <span>{errorMessage}</span>
       </div>
@@ -47,7 +46,7 @@ const FormElements: React.FC<{
   } else if (type === 'select') {
     return (
       <div className={styles.div_input}>
-        <select ref={ref}>
+        <select onChange={(event) => onChange(event)}>
           <option value="" hidden>
             {placeholder}
           </option>
@@ -61,6 +60,6 @@ const FormElements: React.FC<{
       </div>
     );
   }
-});
+};
 
 export default FormElements;
