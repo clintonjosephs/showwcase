@@ -3,15 +3,16 @@ import Modal from 'react-modal';
 import { GetServerSideProps } from 'next';
 import styles from '../../styles/PersonEducation.module.css';
 import Person from '../../models/person';
-import { CloseConnection, connectPerson } from '../../db/connection';
+import { CloseConnection, connectEducation, connectPerson } from '../../db/connection';
 import Head from 'next/head';
 import EducationForm from '../../components/EducationForm';
 import Institutions from '../../components/Institutions';
 import EducationList from '../../components/EducationList';
+import Education from '../../models/education';
 
 Modal.setAppElement('#welcome');
 
-const personEducation: React.FC<{ person: Person }> = ({ person }) => {
+const personEducation: React.FC<{ person: Person, education: Education[], }> = ({ person, education }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
 
   const openModal = () => {
@@ -49,7 +50,7 @@ const personEducation: React.FC<{ person: Person }> = ({ person }) => {
       </section>
       <section className={styles.educationDetails}>
         <Institutions />
-        <EducationList />
+        <EducationList data={education}/>
       </section>
     </>
   );
@@ -61,9 +62,25 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const person = await connectionObj.collection.findOne({ url_id: urlid });
 
   CloseConnection(connectionObj.client);
+
+  const educationConnectionObject = await connectEducation();
+  const education = await educationConnectionObject.collection.find({ user_id: person._id }).toArray();
+
+  CloseConnection(connectionObj.client);
   return {
     props: {
       person: person,
+      education: education.map((history) => ({
+        university: history.university,
+        degree: history.degree,
+        field_of_study: history.field_of_study,
+        start_date: history.start_date,
+        end_date: history.end_date,
+        grade: history.grade,
+        activities: history.activities,
+        description: history.description,
+        user_id: history.user_id,
+      })),
     },
   };
 };
