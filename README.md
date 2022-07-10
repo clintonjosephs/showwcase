@@ -14,13 +14,14 @@
   - NextJs (Production Framework)
   - React (Front end library)
   - React Tostify (Front end library)
-  - Git(version control)
+  - React Modal
   ```
 
 - Technologies used 
   
   ``` bash
   - Git(version control)
+  - MongoDB
   ```
 
 
