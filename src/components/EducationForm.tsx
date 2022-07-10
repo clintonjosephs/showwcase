@@ -13,8 +13,9 @@ import Education from '../models/education';
 
 import styles from '../styles/EducationForm.module.css';
 
-const EducationForm: React.FC<{ closeModal: () => void; personId: string }> = ({
+const EducationForm: React.FC<{ closeModal: () => void; personId: string; updateEducationData: (data: Education) => void; }> = ({
   closeModal,
+  updateEducationData,
   personId,
 }) => {
   const [suggestions, setSuggestions] = useState([]);
@@ -76,6 +77,7 @@ const EducationForm: React.FC<{ closeModal: () => void; personId: string }> = ({
     const data = await response.json();
     if (data.success) {
       toast.success(data.message);
+      updateEducationData(educationToAdd);
       setFormData(fields);
     } else {
       toast.error(data.message);

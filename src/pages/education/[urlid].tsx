@@ -3,7 +3,11 @@ import Modal from 'react-modal';
 import { GetServerSideProps } from 'next';
 import styles from '../../styles/PersonEducation.module.css';
 import Person from '../../models/person';
-import { CloseConnection, connectEducation, connectPerson } from '../../db/connection';
+import {
+  CloseConnection,
+  connectEducation,
+  connectPerson,
+} from '../../db/connection';
 import Head from 'next/head';
 import EducationForm from '../../components/EducationForm';
 import Institutions from '../../components/Institutions';
@@ -12,7 +16,10 @@ import Education from '../../models/education';
 
 Modal.setAppElement('#welcome');
 
-const personEducation: React.FC<{ person: Person, education: Education[], }> = ({ person, education }) => {
+const personEducation: React.FC<{ person: Person; education: Education[] }> = ({
+  person,
+  education,
+}) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [eduData, setEducation] = useState(education);
 
@@ -22,6 +29,9 @@ const personEducation: React.FC<{ person: Person, education: Education[], }> = (
 
   const closeModal = () => {
     setIsOpen(false);
+  };
+  const addEducation = (edu: Education) => {
+    setEducation([edu, ...eduData]);
   };
 
   return (
@@ -45,13 +55,13 @@ const personEducation: React.FC<{ person: Person, education: Education[], }> = (
             className={styles.modal}
             overlayClassName={styles.overlay}
           >
-            <EducationForm closeModal={closeModal} personId={person._id} />
+            <EducationForm closeModal={closeModal} personId={person._id} updateEducationData={addEducation}/>
           </Modal>
         </p>
       </section>
       <section className={styles.educationDetails}>
         <Institutions data={eduData} />
-        <EducationList data={eduData}/>
+        <EducationList data={eduData} />
       </section>
     </>
   );
@@ -65,7 +75,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   CloseConnection(connectionObj.client);
 
   const educationConnectionObject = await connectEducation();
-  const education = await educationConnectionObject.collection.find({ user_id: person._id }).toArray();
+  const education = await educationConnectionObject.collection
+    .find({ user_id: person._id })
+    .toArray();
 
   CloseConnection(connectionObj.client);
   return {
@@ -82,7 +94,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
         description: history.description,
         user_id: history.user_id,
       })),
-
     },
   };
 };
