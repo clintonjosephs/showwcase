@@ -1,34 +1,77 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Showwcase Education
+
+- [Live Demo - Vercel](https://meetupsite.vercel.app/)
+
+>  This is a demo project that allows users add and display their academic history to enable them network and showwcase there academic standing
+
+
+## Built With
+
+- Major languages (HTML, CSS, TypeScript)
+
+- Frameworks / Libraries
+  ```bash
+  - NextJs (Production Framework)
+  - React (Front end library)
+  - React Tostify (Front end library)
+  - Git(version control)
+  ```
+
+- Technologies used 
+  
+  ``` bash
+  - Git(version control)
+  ```
+
 
 ## Getting Started
 
-First, run the development server:
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+ - A text editor(preferably Visual Studio Code)
+
+### Install
+  -  [Git](https://git-scm.com/downloads)
+  -  [Node](https://nodejs.org/en/download/)
+
+### Usage
+#### Clone this repository
 
 ```bash
-npm run dev
-# or
-yarn dev
+$ git@github.com:clintonjosephs/showwcase.git
+$ cd showwcase
+```
+#### Run project
+
+```bash
+$ npm install
+$ npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+#### Open page in browser
+```bash
+$ runs on http://localhost:3001/
+```
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Author
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+👤 **Clinton Mbonu**
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+- GitHub: [@clintonjosephs](https://github.com/clintonjosephs)
+- LinkedIn: [LinkedIn](https://linkedin.com/in/clinton-mbonu)
+- Twitter: [@clintonmbonu2](https://twitter.com/clintonmbonu2)
 
-## Learn More
+## 🤝 Contributing
 
-To learn more about Next.js, take a look at the following resources:
+Contributions, issues, and feature requests are welcome!
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Acknowledgement
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+## Show your support
 
-## Deploy on Vercel
+Give a ⭐️ if you like this project!
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📝 License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is [MIT](https://opensource.org/licenses/MIT) licensed.

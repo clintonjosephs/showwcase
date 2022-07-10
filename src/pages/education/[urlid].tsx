@@ -72,7 +72,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const person = await connectionObj.collection.findOne({ url_id: urlid });
 
   CloseConnection(connectionObj.client);
-
+  
+  if (person === null) {
+    context.res.statusCode = 404;
+    context.res.end('Not found');
+  }
+ 
   const educationConnectionObject = await connectEducation();
   const education = await educationConnectionObject.collection
     .find({ user_id: person._id })
