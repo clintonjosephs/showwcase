@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useRef } from 'react';
@@ -8,11 +9,13 @@ import styles from '../styles/Home.module.css';
 
 const Home = () => {
   const router = useRouter();
+  const [loading, setLoading] = useState(false);
 
   const nameRef = useRef<HTMLInputElement>(null);
 
   const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    setLoading(true);
     const userName = nameRef.current!.value.trim();
 
     if (userName.length === 0) {
@@ -26,7 +29,7 @@ const Home = () => {
 
     const data = await response.json();
     if (data.success) {
-      router.push(`/education/${urlId}`);
+      router.replace(`/education/${urlId}`);
     }
   };
 
@@ -56,7 +59,15 @@ const Home = () => {
             maxLength={200}
             ref={nameRef}
           />
-          <button type="submit">Enter</button>
+          {!loading ? (
+            <button type="submit" className={styles.welcomeBtn}>
+              Enter
+            </button>
+          ) : (
+            <button type="button" className={styles.welcomeBtn}>
+             Setting up your profile ...
+            </button>
+          )}
         </form>
       </div>
     </>

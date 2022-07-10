@@ -16,13 +16,13 @@
   font-size: 1rem;
 }
 
-.form button[type="submit"] {
+.welcomeBtn {
   padding: 0.5rem;
-  font-size: 1rem;
-  width: 10rem;
+  font-size: small;
   background: #eaeaea;
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
   align-self: center;
+  max-width: 10rem;
 }
