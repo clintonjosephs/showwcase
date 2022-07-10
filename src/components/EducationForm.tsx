@@ -3,9 +3,10 @@ import { BuildFormElements, fields } from '../helpers/format';
 import FormElements from './FormElements';
 import styles from '../styles/EducationForm.module.css';
 import SuggestionsList from './SuggestionsList';
-import { getSchools } from '../helpers/calls';
+import { getSchools, postRequest } from '../helpers/calls';
 import University from '../models/university';
 import { uuid } from 'uuidv4';
+import Education from '../models/education';
 
 const EducationForm: React.FC<{ closeModal: () => void; personId: string }> = ({
   closeModal,
@@ -26,10 +27,6 @@ const EducationForm: React.FC<{ closeModal: () => void; personId: string }> = ({
   };
 
   const onChange = async (e) => {
-    // console.log(personId);
-    // console.log(data);
-    // console.log(e.target.name);
-
     const data = e.target.value;
     setFormData({ ...formData, [e.target.name]: data });
     if (e.target.name === 'university' && data.length >= 3) {
@@ -51,6 +48,26 @@ const EducationForm: React.FC<{ closeModal: () => void; personId: string }> = ({
     }
   };
 
+  const submitHandler = async (event: React.FormEvent) => {
+    event.preventDefault();
+    const educationToAdd = new Education(
+        personId,
+        formData.university,
+        formData.degree,
+        formData.field_of_study,
+        formData.start_date_month + ',' + formData.start_date_year,
+        formData.end_date_month + ',' + formData.end_date_year,
+        formData.grade,
+        formData.description,
+        formData.description
+    );
+
+    const response = await postRequest('/api/add_education', educationToAdd);
+
+    const data = await response.json();
+    console.log(data)
+  }
+
   return (
     <>
       <div className={styles.modalHeading}>
@@ -60,7 +77,7 @@ const EducationForm: React.FC<{ closeModal: () => void; personId: string }> = ({
         </button>
       </div>
 
-      <form className={styles.form}>
+      <form className={styles.form} onSubmit={submitHandler}>
         {elements.map((input) => {
           let mm = (
             <>

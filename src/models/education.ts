@@ -1,8 +1,6 @@
-import University from './university';
-
 class Education {
   user_id: string;
-  university: University;
+  university: string;
   degree: string;
   field_of_study: string;
   start_date: string;
@@ -13,7 +11,7 @@ class Education {
 
   constructor(
     user_id: string,
-    university: University,
+    university: string,
     degree: string,
     field_of_study: string,
     start_date: string,

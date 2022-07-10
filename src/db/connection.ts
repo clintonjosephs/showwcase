@@ -14,6 +14,12 @@ export const connectPerson = async () => {
   return connectionObj;
 }
 
+export const connectEducation = async () => {
+  dotenv.config();
+  const connectionObj = await ConnectToDB(process.env.EDUCATION_COLLECTION_NAME);
+  return connectionObj;
+}
+
 export const CloseConnection = async (client: MongoClient) => {
   client.close();
 };
