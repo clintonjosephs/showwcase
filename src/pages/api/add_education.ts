@@ -18,7 +18,7 @@ const handler = async (
       await connectionObj.collection.insertOne(body);
       res
         .status(200)
-        .json({ message: 'Education added successfully for user', success: true });
+        .json({ message: 'Academic history successfully updated.', success: true });
     }
   } catch (err) {
     console.log(err);

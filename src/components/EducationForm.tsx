@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
+import { toast } from 'react-toastify';
+import { v4 as uuidv4 } from 'uuid';
+
 import { BuildFormElements, fields } from '../helpers/format';
-import FormElements from './FormElements';
-import styles from '../styles/EducationForm.module.css';
-import SuggestionsList from './SuggestionsList';
 import { getSchools, postRequest } from '../helpers/calls';
+import FormElements from './FormElements';
+
+import SuggestionsList from './SuggestionsList';
+
 import University from '../models/university';
-import { uuid } from 'uuidv4';
 import Education from '../models/education';
+
+import styles from '../styles/EducationForm.module.css';
 
 const EducationForm: React.FC<{ closeModal: () => void; personId: string }> = ({
   closeModal,
@@ -14,15 +19,16 @@ const EducationForm: React.FC<{ closeModal: () => void; personId: string }> = ({
 }) => {
   const [suggestions, setSuggestions] = useState([]);
   const [formData, setFormData] = useState(fields);
+  const [loading, setLoading] = useState(false);
 
   const elements = BuildFormElements();
 
   const clearSuggestions = () => {
     setSuggestions([]);
-  }
+  };
 
-  const handleSchoolSelect = ( school_name: string ) => {
-    setFormData( {...formData, university: school_name} );
+  const handleSchoolSelect = (school_name: string) => {
+    setFormData({ ...formData, university: school_name });
     clearSuggestions();
   };
 
@@ -33,15 +39,17 @@ const EducationForm: React.FC<{ closeModal: () => void; personId: string }> = ({
       const response = await getSchools(data);
       const response_data = await response.json();
       setSuggestions(
-        response_data.slice(0, 10).map(
-          (value) =>
-            new University(
-              value.country,
-              value.name,
-              value.domains,
-              value.web_pages
-            )
-        )
+        response_data
+          .slice(0, 10)
+          .map(
+            (value) =>
+              new University(
+                value.country,
+                value.name,
+                value.domains,
+                value.web_pages
+              )
+          )
       );
     } else {
       clearSuggestions();
@@ -50,23 +58,30 @@ const EducationForm: React.FC<{ closeModal: () => void; personId: string }> = ({
 
   const submitHandler = async (event: React.FormEvent) => {
     event.preventDefault();
+    setLoading(true);
     const educationToAdd = new Education(
-        personId,
-        formData.university,
-        formData.degree,
-        formData.field_of_study,
-        formData.start_date_month + ',' + formData.start_date_year,
-        formData.end_date_month + ',' + formData.end_date_year,
-        formData.grade,
-        formData.description,
-        formData.description
+      personId,
+      formData.university,
+      formData.degree,
+      formData.field_of_study,
+      formData.start_date_month + ',' + formData.start_date_year,
+      formData.end_date_month + ',' + formData.end_date_year,
+      formData.grade,
+      formData.description,
+      formData.description
     );
 
     const response = await postRequest('/api/add_education', educationToAdd);
 
     const data = await response.json();
-    console.log(data)
-  }
+    if (data.success) {
+      toast.success(data.message);
+      setFormData(fields);
+    } else {
+      toast.error(data.message);
+    }
+    setLoading(false);
+  };
 
   return (
     <>
@@ -85,7 +100,7 @@ const EducationForm: React.FC<{ closeModal: () => void; personId: string }> = ({
                 key={input.id}
                 name={input.name}
                 type={input.type}
-                value={ formData[input.name] }
+                value={formData[input.name]}
                 placeholder={input.placeholder}
                 errorMessage={input.errorMessage}
                 options={input.options ? input.options : []}
@@ -94,16 +109,26 @@ const EducationForm: React.FC<{ closeModal: () => void; personId: string }> = ({
                 required={input.required}
               />
               {input.name === 'university' && suggestions.length > 0 && (
-                <SuggestionsList data={suggestions} handleClick={handleSchoolSelect}  key={uuid()} />
+                <SuggestionsList
+                  data={suggestions}
+                  handleClick={handleSchoolSelect}
+                  key={uuidv4()}
+                />
               )}
             </>
           );
           return mm;
         })}
         <div style={{ width: '100%', gridColumn: 'span 2' }}>
-          <button type="submit" className={styles.educationBtn}>
-            Save
-          </button>
+          {!loading ? (
+            <button type="submit" className={styles.educationBtn}>
+              Save
+            </button>
+          ) : (
+            <button type="button" className={styles.educationBtn}>
+              Saving your changes...
+            </button>
+          )}
         </div>
       </form>
     </>
