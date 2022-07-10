@@ -6,7 +6,7 @@ import Education from '../models/education';
 
 const EducationList: React.FC<{ data: Education[] }> = ({ data }) => {
   if ( data.length === 0 ) {
-    const eduObj = new Education('', 'No Academic Information Available', '', '', '', '', '', '', '');
+    const eduObj = new Education('', 'No Academic Information Available', '', '', '', '', 'N/A', '', '');
     return <EducationItem institution={eduObj} key={uuidv4()} />;
   }
   return (
