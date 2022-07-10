@@ -1,6 +1,6 @@
 # Showwcase Education
 
-- [Live Demo - Vercel](https://meetupsite.vercel.app/)
+- [Live Demo - Vercel](https://showwcase-education.vercel.app/)
 
 >  This is a demo project that allows users add and display their academic history to enable them network and showwcase there academic standing
 
