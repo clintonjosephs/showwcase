@@ -2,7 +2,7 @@
 
 - [Live Demo - Vercel](https://showwcase-education.vercel.app/)
 
->  This is a demo project that allows users add and display their academic history to enable them network and showwcase there academic standing
+>  This is a demo project that allows users add and display their academic history to enable them network and showwcase there academic standing. Explore and Enjoy
 
 
 ## Built With
